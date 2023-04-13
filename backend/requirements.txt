@@ -1,1 +1,6 @@
-fastapi~=0.95.0
+fastapi
+jinja2
+unicorn
+aiofiles
+sqlalchemy
+python-dotenv
