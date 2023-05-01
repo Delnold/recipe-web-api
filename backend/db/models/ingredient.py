@@ -1,12 +1,15 @@
-from sqlalchemy import Column, ForeignKey, Integer, Table, Text
+from sqlalchemy import Column, ForeignKey, Integer, Text
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql.sqltypes import NullType
 from backend.db.base_class import Base
 
 class Ingredient(Base):
-    __tablename__ = 'ingredients_sql_alchemy'
-
+    __tablename__ = 'ingredients'
     id = Column(Integer, primary_key=True)
     name = Column(Text)
 
-    recipes = relationship('Recipe', secondary='recipe_ingridients')
+class RecipeIngredient(Base):
+    __tablename__ = "recipes_ingredients"
+    recipe_id = Column(Integer, ForeignKey("recipes.id"), primary_key=True)
+    ingredient_id = Column(Integer, ForeignKey("ingredients.id"), primary_key=True)
+    recipe = relationship("Recipe")
+    ingredient = relationship("Ingredient")

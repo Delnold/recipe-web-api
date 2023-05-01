@@ -1,15 +1,12 @@
-from sqlalchemy import Column, ForeignKey, Integer, Table, Text
+from sqlalchemy import Column, ForeignKey, Integer, Text
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql.sqltypes import NullType
-from backend.db.base_class import Base
 
-metadata = Base.metadata
+from backend.db.base_class import Base
 
 
 
 class Recipe(Base):
-    __tablename__ = 'recipes_sql_alchemy'
-
+    __tablename__ = 'recipes'
     id = Column(Integer, primary_key=True)
     name = Column(Text, nullable=False)
     description = Column(Text)
@@ -18,10 +15,7 @@ class Recipe(Base):
     cook_time = Column(Integer)
     total_time = Column(Integer)
     servings = Column(Integer)
+    tags_id = Column(Integer, ForeignKey("tags.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
 
 
-t_sqlite_sequence = Table(
-    'sqlite_sequence', metadata,
-    Column('name', NullType),
-    Column('seq', NullType)
-)

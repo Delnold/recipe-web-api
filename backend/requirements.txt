@@ -4,3 +4,7 @@ unicorn
 aiofiles
 sqlalchemy
 python-dotenv
+pydantic[email]
+pytest
+requests
+httpx
