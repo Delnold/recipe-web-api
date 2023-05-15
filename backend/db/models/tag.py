@@ -5,7 +5,7 @@ from backend.db.base_class import Base
 class Tag(Base):
     __tablename__ = 'tags'
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    name = Column(String, nullable=False, unique = True)
     description = Column(String, nullable=True)
     recipe = relationship('Recipe')
 

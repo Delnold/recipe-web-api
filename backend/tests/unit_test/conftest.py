@@ -35,10 +35,7 @@ SessionTesting = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture(scope="function")
 def app() -> Generator[FastAPI, Any, None]:
-    """
-    Create a fresh database on each test case.
-    """
-    Base.metadata.create_all(engine)  # Create the tables.
+    Base.metadata.create_all(engine)
     _app = start_application()
     yield _app
     Base.metadata.drop_all(engine)

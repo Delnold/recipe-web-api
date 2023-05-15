@@ -8,7 +8,7 @@ from backend.db.base_class import Base
 class Recipe(Base):
     __tablename__ = 'recipes'
     id = Column(Integer, primary_key=True)
-    name = Column(Text, nullable=False)
+    name = Column(Text, nullable=False, unique = True)
     description = Column(Text)
     instructions = Column(Text)
     prep_time = Column(Integer)

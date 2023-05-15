@@ -5,7 +5,7 @@ from backend.db.base_class import Base
 class Ingredient(Base):
     __tablename__ = 'ingredients'
     id = Column(Integer, primary_key=True)
-    name = Column(Text)
+    name = Column(Text, unique = True)
 
 class RecipeIngredient(Base):
     __tablename__ = "recipes_ingredients"
